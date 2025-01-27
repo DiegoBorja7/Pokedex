@@ -71,4 +71,11 @@ public class SpritesEntity {
     public void setBackShiny(String backShiny) {
         this.backShiny = backShiny;
     }
+
+    @Override
+    public String toString() {
+        return "Sprites{" +
+                "Frente='" + frontDefault + '\'' +
+                '}';
+    }
 }

@@ -14,7 +14,7 @@ public class PokemonEntity {
     private int height;
     private int weight;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "pokemon_id", referencedColumnName = "id")
     private List<AbilityEntity> abilities;
 
@@ -87,5 +87,18 @@ public class PokemonEntity {
 
     public void setSprites(SpritesEntity sprites) {
         this.sprites = sprites;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "id=" + id +
+                ", nombre ='" + name + '\'' +
+                ", Experiencia base =" + baseExperience +
+                ", Altura =" + height +
+                ", Peso =" + weight +
+                ", Habilidades =" + abilities.toString() +
+                ", sprites =" + sprites.toString() +
+                '}';
     }
 }

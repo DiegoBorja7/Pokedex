@@ -58,4 +58,12 @@ public class AbilityEntity {
     public void setAbility(AbilityDetail ability) {
         this.ability = ability;
     }
+
+    @Override
+    public String toString() {
+        return "Habilidades{" +
+                "Habilidades =" + ability.toString() +
+                ", Está oculto =" + isHidden +
+                '}';
+    }
 }

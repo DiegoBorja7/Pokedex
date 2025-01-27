@@ -4,7 +4,6 @@ import ec.edu.uce.pokedex.API.PokemonServiceAPI;
 import ec.edu.uce.pokedex.entities.Pokemonv2;
 import ec.edu.uce.pokedex.model.PokemonList;
 import ec.edu.uce.pokedex.model.PokemonModel;
-import ec.edu.uce.pokedex.services.PokemonDatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

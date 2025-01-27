@@ -24,6 +24,15 @@ public class PokemonDatabaseService {
         return pokemonRepository.save(pokemon);
     }
 
+    @Transactional
+    public List<PokemonEntity> obtenerTodosLosPokemones() {
+        return pokemonRepository.findAll();
+    }
+
+    public boolean existsById(int id) {
+        return pokemonRepository.existsById(id);
+    }
+
     public PokemonEntity createPokemon(int id, String name, int baseExperience, int height, int weight,
                                        List<AbilityEntity> abilities, SpritesEntity sprites) {
         PokemonEntity pokemon = new PokemonEntity();

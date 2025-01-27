@@ -80,14 +80,17 @@ public class PokemonServiceAPI {
         int startId = 1;
         int endId = 1350;
         return Flux.range(startId, endId - startId + 1)
-                .flatMapSequential(id -> webClient.get()
+                .parallel() // Habilitar paralelismo
+                .runOn(Schedulers.parallel()) // Ejecutar en hilos paralelos
+                .flatMap(id -> webClient.get()
                         .uri("/pokemon/{id}", id)
                         .retrieve()
                         .bodyToMono(PokemonModel.class)
                         .retryWhen(Retry.backoff(3, Duration.ofMillis(500)))// Recolecta todos los detalles de los Pokémon
                         .doOnError(e -> System.out.println("Error con ID: " + id))
                         .onErrorResume(e -> Mono.empty())
-                    );
+                    )
+                .sequential();
 
     }
 
