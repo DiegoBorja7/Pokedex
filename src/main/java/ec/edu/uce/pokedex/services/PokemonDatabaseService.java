@@ -33,17 +33,13 @@ public class PokemonDatabaseService {
         return pokemonRepository.existsById(id);
     }
 
-    public PokemonEntity createPokemon(int id, String name, int baseExperience, int height, int weight,
-                                       List<AbilityEntity> abilities, SpritesEntity sprites) {
-        PokemonEntity pokemon = new PokemonEntity();
-        pokemon.setId(id);
-        pokemon.setName(name);
-        pokemon.setBaseExperience(baseExperience);
-        pokemon.setHeight(height);
-        pokemon.setWeight(weight);
-        pokemon.setAbilities(abilities);
-        pokemon.setSprites(sprites);
+    public PokemonEntity obtenerPokemonConDetalles(int id) {
+        PokemonEntity pokemon = pokemonRepository.findById(id).orElse(null);
+        return pokemon;
+    }
 
-        return savePokemon(pokemon);
+    @Transactional
+    public PokemonEntity buscarPorNombre(String nombre){
+        return pokemonRepository.buscarPorNombre(nombre);
     }
 }

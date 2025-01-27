@@ -61,9 +61,8 @@ public class AbilityEntity {
 
     @Override
     public String toString() {
-        return "Habilidades{" +
-                "Habilidades =" + ability.toString() +
-                ", Está oculto =" + isHidden +
-                '}';
+        return
+                "Habilidades = " + ability.toString() + "\n" +
+                "Está oculto =" + isHidden + "\n" ;
     }
 }

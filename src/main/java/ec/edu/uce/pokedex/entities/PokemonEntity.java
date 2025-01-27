@@ -91,14 +91,14 @@ public class PokemonEntity {
 
     @Override
     public String toString() {
-        return "Pokemon{" +
-                "id=" + id +
-                ", nombre ='" + name + '\'' +
-                ", Experiencia base =" + baseExperience +
-                ", Altura =" + height +
-                ", Peso =" + weight +
-                ", Habilidades =" + abilities.toString() +
-                ", sprites =" + sprites.toString() +
-                '}';
+        return "Pokemon\n" +
+                "Id= " + id + "\n" +
+                "Nombre = '" + name + '\''  + "\n" +
+                "Experiencia base = " + baseExperience +  "\n" +
+                "Altura = " + height  + "\n" +
+                "Peso = " + weight  + "\n" +
+                "Habilidades = " + abilities.toString()  + "\n" +
+                "Sprites = " + sprites.toString()  + "\n" +
+                "\n";
     }
 }

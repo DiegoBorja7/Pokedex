@@ -28,6 +28,8 @@ public class GetAllPokemons extends JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setResizable(false); // Evita que se pueda redimensionar
+        setExtendedState(JFrame.NORMAL);
         this.pokemonService = pokemonService;
     }
 
@@ -67,6 +69,7 @@ public class GetAllPokemons extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(800, 600));
+        setTitle("Todos los pokemons");
 
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -84,7 +87,7 @@ public class GetAllPokemons extends JFrame {
         info.setColumns(20);
         info.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         info.setRows(5);
-        info.setText("List of Pokemons");
+        info.setText("LISTA DE POKEMONS");
         jScrollPane1.setViewportView(info);
 
         jButton1.setIcon(new ImageIcon(getClass().getResource("/pictures/Pokebola-pokeball-png-0 (1).png"))); // NOI18N

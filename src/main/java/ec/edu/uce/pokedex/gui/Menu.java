@@ -6,6 +6,8 @@ package ec.edu.uce.pokedex.gui;/*
 import ec.edu.uce.pokedex.services.PokemonDatabaseService;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
+
 /**
  *
  * @author PapiBilly
@@ -18,6 +20,8 @@ public class Menu extends javax.swing.JFrame {
         this.pokemonService = pokemonService;
         initComponents();
         setLocationRelativeTo(null); // Centra la ventana en la pantalla
+        setResizable(false); // Evita que se pueda redimensionar
+        setExtendedState(JFrame.NORMAL);
     }
 
     /**
@@ -40,15 +44,21 @@ public class Menu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menú Principal - Pokedex");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pictures/Logo.png"))); // NOI18N
 
-        jButton1.setText("Exit");
+        jButton1.setText("Cerrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Get All Pokemons");
+        jButton2.setText("Obtener todos los Pokemons");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -56,7 +66,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setText("Searching Pokemons by ...");
+        jButton3.setText("Buscar pokemons por ...");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -157,13 +167,18 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        System.exit(0);
+    }
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         GetAllPokemons frmGetAllPokemons = new GetAllPokemons(pokemonService);
         frmGetAllPokemons.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        Searching frmSearching = new Searching(pokemonService);
+        frmSearching.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
