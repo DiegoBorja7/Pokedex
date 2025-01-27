@@ -1,5 +1,8 @@
 package ec.edu.uce.pokedex.entities;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class AbilityDetail {
     private String name;
     private String url;

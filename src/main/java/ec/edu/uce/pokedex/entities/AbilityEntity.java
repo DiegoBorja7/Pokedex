@@ -1,17 +1,40 @@
 package ec.edu.uce.pokedex.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
-public class Ability {
+@Entity
+@Table(name = "ability")
+public class AbilityEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    @JsonProperty("is_hidden")
+    @Column(name = "is_hidden")
     private boolean isHidden;
 
     private int slot;
 
+    @Embedded
     private AbilityDetail ability;
 
+    public AbilityEntity() {
+    }
+
+    public AbilityEntity(boolean isHidden, int slot, AbilityDetail ability) {
+        this.isHidden = isHidden;
+        this.slot = slot;
+        this.ability = ability;
+    }
+
     // Getters y setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public boolean isHidden() {
         return isHidden;
     }
@@ -34,22 +57,5 @@ public class Ability {
 
     public void setAbility(AbilityDetail ability) {
         this.ability = ability;
-    }
-
-    public AbilityEntity toEntity() {
-        AbilityEntity entity = new AbilityEntity();
-        entity.setHidden(this.isHidden);
-        entity.setSlot(this.slot);
-        entity.setAbility(this.ability);
-        return entity;
-    }
-
-    @Override
-    public String toString() {
-        return "Ability{" +
-                "isHidden=" + isHidden +
-                ", slot=" + slot +
-                ", ability=" + ability +
-                '}';
     }
 }

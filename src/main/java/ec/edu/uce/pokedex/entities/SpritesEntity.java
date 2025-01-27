@@ -1,21 +1,45 @@
 package ec.edu.uce.pokedex.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
-public class Sprites {
-    @JsonProperty("front_default")
+@Entity
+@Table(name = "sprites")
+public class SpritesEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "front_default")
     private String frontDefault;
 
-    @JsonProperty("front_shiny")
+    @Column(name = "front_shiny")
     private String frontShiny;
 
-    @JsonProperty("back_default")
+    @Column(name = "back_default")
     private String backDefault;
 
-    @JsonProperty("back_shiny")
+    @Column(name = "back_shiny")
     private String backShiny;
 
+    public SpritesEntity() {
+    }
+
+    public SpritesEntity(String frontDefault, String frontShiny, String backDefault, String backShiny) {
+        this.frontDefault = frontDefault;
+        this.frontShiny = frontShiny;
+        this.backDefault = backDefault;
+        this.backShiny = backShiny;
+    }
+
     // Getters y setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFrontDefault() {
         return frontDefault;
     }
@@ -46,14 +70,5 @@ public class Sprites {
 
     public void setBackShiny(String backShiny) {
         this.backShiny = backShiny;
-    }
-
-    public SpritesEntity toEntity() {
-        SpritesEntity entity = new SpritesEntity();
-        entity.setFrontDefault(this.frontDefault);
-        entity.setFrontShiny(this.frontShiny);
-        entity.setBackDefault(this.backDefault);
-        entity.setBackShiny(this.backShiny);
-        return entity;
     }
 }
